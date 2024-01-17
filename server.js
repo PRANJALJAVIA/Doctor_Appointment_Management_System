@@ -21,7 +21,7 @@ app.use(morgan('dev'));
 //routes
 app.use("/api/v1/user", require("./routes/userRoutes"));
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 9090
 //listen port
 app.listen(port, ()=>{
     console.log(`Server is running at port: ${port}`)

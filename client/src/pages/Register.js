@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../Styles/RegisterStyles.css";
-import { Form, message } from "antd";
+import { Form, message,Input,Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 
 const Register = () => {
@@ -105,7 +105,7 @@ const Register = () => {
 //     </>
 //   );
     return (
-    <Form form={form} onFinish={handleSubmit} layout="vertical">
+    <Form form={Form} onFinish={handleSubmit} layout="vertical">
       <Form.Item
         label="Name"
         name="name"
@@ -148,7 +148,7 @@ const Register = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit" loading={loading}>
+        <Button type="primary" htmlType="submit" >
           Register
         </Button>
       </Form.Item>
