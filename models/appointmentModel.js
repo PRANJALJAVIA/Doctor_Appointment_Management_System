@@ -4,9 +4,13 @@ const appointmentSchema = new mongoose.Schema({
     Id:{
         type: String,
     },
-    userId:{
+    userEmail:{
         type: String,
-        require: [true, 'user id is required'],
+        require: [true, 'user email is required'],
+    },
+    userName:{
+        type: String, 
+        require: [true, 'user name is required'],
     },
     docId:{
         type: String, 
@@ -15,6 +19,10 @@ const appointmentSchema = new mongoose.Schema({
     timing:{
         type: Object,
         required: [true, 'timing is required'],
+    },
+    date:{
+        type: String,
+        required: [true, 'date is required']
     },
     status:{
         type: Boolean,

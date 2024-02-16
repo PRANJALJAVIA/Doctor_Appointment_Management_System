@@ -9,7 +9,7 @@ const getDataController = async (req, res) => {
           success: false,
         });
       } else {
-        console.log(res);
+        // console.log(res);
         res.status(200).send({
           success: true,
           data: {
@@ -18,7 +18,8 @@ const getDataController = async (req, res) => {
             isAdmin: user.isAdmin,
             isDoctor: user.isDoctor,
             mobile: user.mobile,
-            notification: user.notification
+            // notification: user.notification
+            _id: user._id
           },
         });
       }

@@ -9,7 +9,7 @@ const Login = () => {
 
   const onfinishHandler = async (values) => {
     try {
-      const res = await axios.post("http://localhost:8080/api/v1/user/login", values);
+      const res = await axios.post("http://localhost:9090/api/v1/user/login", values);
       if (res.data.success) {
         localStorage.setItem("token", res.data.token);
         message.success(res.data.message);
@@ -25,11 +25,7 @@ const Login = () => {
 
   return (
     <>
-      <Form
-        layout="vertical"
-        onFinish={onfinishHandler}
-        className="register_form"
-      >
+      <Form layout="vertical" onFinish={onfinishHandler} className="loginform">
         <div id="loginform">
           <h2 id="headerTitle">Login</h2>
 
@@ -56,7 +52,7 @@ const Login = () => {
           <div className="link1">
             <Link to="/register" className="m-3">
               {" "}
-              Register Here
+              New user, Register Here
             </Link>
           </div>
 

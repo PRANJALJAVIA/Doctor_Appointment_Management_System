@@ -1,0 +1,41 @@
+.doctordata
+{
+    color: rgb(0, 0, 0);
+   
+    display: block;
+    justify-content: center;
+    background-color: rgb(253, 253, 253);
+    width: 280px;
+    height : 280px;
+    padding: 4px;
+    font-size: 18px;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin-top: -8px;
+    margin-bottom: 15px;
+    margin-left: 16px;
+    
+}
+
+.home
+{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    margin-left: 50px;
+    margin-top: 50px;
+    /* padding: 50px; */
+}
+
+.searchbar {
+    width: 500px; /* Adjust the width as needed */
+    height: 20px; /* Adjust the height as needed */
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px; /* Adjust the border-radius for a rounded appearance */
+    outline: none;
+    font-size: 16px;
+  }
+  
+  .searchbar:focus {
+    border-color: #00060b; /* Change the border color on focus as desired */
+  }

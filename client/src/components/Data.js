@@ -5,7 +5,7 @@ export const SidebarUser = [
       icon: "fa-solid fa-house",
     },
     {
-      name: "Appointments",
+      name: "Book Appointment",
       path: "/appointment-user",
       icon: "fa-solid fa-list",
     },

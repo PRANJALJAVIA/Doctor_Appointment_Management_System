@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+}
+
+.column2{
+    flex: 1;
+    padding: 20px;
+    margin: 0 10px;
+}
+
+.column1{
+    flex: 1;
+    padding: 30px 50px;
+    margin: 0 30px;
+    border: 2px solid #090000; /* Add your border styles here */
+    border-radius: 10px; /* Adjust the value for the desired amount of rounding */
+}
