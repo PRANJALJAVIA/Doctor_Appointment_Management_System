@@ -10,7 +10,6 @@ const { checkAvailibilityCtrl, getAppointmentListCtrl, approveAppointmentCtrl } 
 //user router
 const router = express.Router();
 
-//routes
 //login
 router.post('/login', loginController);
 
