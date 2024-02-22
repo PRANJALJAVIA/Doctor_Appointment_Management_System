@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:600|Work+Sans:400,500,600,700&display=swap');
 
+
 body{
   background: #fff;
   /* background: rgb(34,193,195);
@@ -21,6 +22,20 @@ html{
   margin: 100px auto;
   background-color: #FFFFFF;
   border-radius: 25px;
+  border-color: black;
+  border-width: 2px;
+}
+
+#loginContainer {
+  max-width: 500px;
+  min-width: 300px;
+  max-height: 700px;
+  width: 30%;
+  height: 60%;
+  margin: 100px auto;
+  background-color: #FFFFFF;
+  border-radius: 25px;
+  border: 2px solid black; /* Added border styling */
 }
 
 #headerTitle{
@@ -37,7 +52,6 @@ html{
   align-items: center;
   padding-top: 2rem;
   max-width: 100%;
-  
 }
 
 .row input{
@@ -67,10 +81,15 @@ html{
 }
 
 .row label{
-  align-self: start;
+  align-items: center;
+  /* align-self: start; */
   padding-left: 4.5rem;
   padding-bottom: 0.5rem;
   color: rgba(187,187,187,0.9);
+}
+
+.inputItem{
+  align-items: center;
 }
 
 .row button{
@@ -131,3 +150,4 @@ html{
    padding-top: 2rem;
    margin-top: 1.5rem;
 }
+

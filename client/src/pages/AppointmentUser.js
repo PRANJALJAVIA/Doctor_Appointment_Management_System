@@ -77,7 +77,7 @@ const AppointmentUser = () => {
           <div className="home">
               {docList
                 .filter((doc) =>
-                  `${doc.firstName} ${doc.lastName} ${doc.email} ${doc.specialization} ${doc.phone} ${doc.status} ${doc.experience}`
+                  `${doc.firstName} ${doc.lastName} ${doc.email} ${doc.specialization} ${doc.phone} ${doc.status} ${doc.experience} ${doc.address}`
                     .toLowerCase()
                     .includes(searchQuery.toLowerCase())
                 )
@@ -86,7 +86,7 @@ const AppointmentUser = () => {
                   return (
                     <div key={index}>
                       <div className="doctordata">
-                        <div className="text-dark bg-secondry m-3 border-dark rounded">
+                        {/* <div className="text-dark bg-secondry m-3 border-dark rounded">
                           <label className="mr-3">First Name : </label>
                           {doc.firstName}
                         </div>
@@ -94,19 +94,45 @@ const AppointmentUser = () => {
                         <div className="text-dark bg-secondry m-3 border-dark rounded">
                           <label className="mr-3">Last Name : </label>
                           {doc.lastName}
+                        </div> */}
+
+                        <div className="DoctorName">
+                          Dr. {doc.firstName} {doc.lastName}
+                        </div> 
+
+                        <div className="specialization">
+                          ({doc.specialization}) 
+                        </div>
+                        
+                        <hr className="underline" />
+
+                        <div className="info" style={{ display: 'flex', alignItems: 'center' }}>
+                          <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Email</div> : {doc.email}
                         </div>
 
-                        <div className="text-dark bg-secondry m-3 border-dark rounded">
-                          <label>Email :</label>
+                        <div className="info" style={{ display: 'flex', alignItems: 'center' }}>
+                          <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Experience</div> : {doc.experience}
+                        </div>
+
+                        <div className="info" style={{ display: 'flex', alignItems: 'center' }}>
+                          <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Phone</div> : {doc.phone}
+                        </div>
+
+                        <div className="info" style={{ display: 'flex', alignItems: 'center' }}>
+                          <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Address</div> : {doc.address}
+                        </div>
+
+                        {/* <div className="text-dark bg-secondry m-3 border-dark rounded">
+                          <label>Email : </label>
                           {doc.email}
-                        </div>
+                        </div> */}
 
-                        <div className="text-dark bg-secondry m-3 border-dark rounded">
+                        {/* <div className="text-dark bg-secondry m-3 border-dark rounded">
                           <label>Specialization :</label>
                           {doc.specialization}
-                        </div>
+                        </div> */}
 
-                        <div className="text-dark bg-secondry m-3 border-dark rounded">
+                        {/* <div className="text-dark bg-secondry m-3 border-dark rounded">
                           <label>Experience : </label>
                           {doc.experience}
                         </div>
@@ -114,10 +140,10 @@ const AppointmentUser = () => {
                         <div className="text-dark bg-secondry m-3 border-dark rounded">
                           <label> Phone : </label>
                           {doc.phone}
-                        </div>
+                        </div> */}
 
                         <center>
-                          <button onClick={() => {navigate(`/book-appointment/${doc.userId}`)}}>
+                          <button className='button-class' onClick={() => {navigate(`/book-appointment/${doc.userId}`)}}>
                             Book Appointment
                           </button>
                         </center>
@@ -129,7 +155,7 @@ const AppointmentUser = () => {
         </>
       </Layout>
     </>
-  )
+  ) 
 }
 
 export default AppointmentUser

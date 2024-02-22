@@ -25,42 +25,45 @@ const Login = () => {
 
   return (
     <>
-      <Form layout="vertical" onFinish={onfinishHandler} className="loginform">
-        <div id="loginform">
-          <h2 id="headerTitle">Login</h2>
+      <div id="loginContainer">
+        <Form layout="vertical" onFinish={onfinishHandler} className="loginform">
+          <div id="loginform">
+            <h2 id="headerTitle">Login</h2>
 
-          <div class="row">
-            <div className="label">
-              <Form.Item name="email">
-                <input type="email" placeholder="Enter your Email" required />
-              </Form.Item>
+            <div class="row">
+              <div className="label">
+                <center>
+                <Form.Item name="email">
+                  <center><input type="email" placeholder="Enter your Email" required /></center>
+                </Form.Item></center>
+              </div>
+            </div>
+
+            <div class="row">
+              <div className="label">
+                <Form.Item name="password">
+                  <input
+                    type="password"
+                    placeholder="Enter your Password"
+                    required
+                  />
+                </Form.Item>
+              </div>
+            </div>
+
+            <div className="link1">
+              <Link to="/register" className="m-3">
+                {" "}
+                New user, Register Here
+              </Link>
+            </div>
+
+            <div id="button" class="row">
+              <button>Log in</button>
             </div>
           </div>
-
-          <div class="row">
-            <div className="label">
-              <Form.Item name="password">
-                <input
-                  type="password"
-                  placeholder="Enter your Password"
-                  required
-                />
-              </Form.Item>
-            </div>
-          </div>
-
-          <div className="link1">
-            <Link to="/register" className="m-3">
-              {" "}
-              New user, Register Here
-            </Link>
-          </div>
-
-          <div id="button" class="row">
-            <button>Log in</button>
-          </div>
-        </div>
-      </Form>
+        </Form>
+      </div>
     </>
   );
 };

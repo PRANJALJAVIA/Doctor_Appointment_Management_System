@@ -4,17 +4,47 @@
    
     display: block;
     justify-content: center;
-    background-color: rgb(253, 253, 253);
-    width: 280px;
-    height : 280px;
+    background-color: #ffffff;
+    width: 300px;
+    height : 360px;
     padding: 4px;
     font-size: 18px;
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     margin-top: -8px;
     margin-bottom: 15px;
-    margin-left: 16px;
-    
+    margin-left: 45px;
+    border-radius: 10px;
+    border: 2px solid #00060b
+}
+
+.DoctorName{
+  font-weight: bold; /* Make the name bold */
+  font-size: 27px;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 3px;
+}
+
+.underline {
+  border: none;
+  border-bottom: 2px solid black; /* Adjust thickness and color as needed */
+  margin-top: 5px; /* Adjust spacing between name and underline */
+  width: calc(100% - 50px); /* Adjust width to match the DoctorName width minus left padding */
+  margin-left: 10px;
+  font-weight: bold; /* Make the underline bold */
+}
+
+.specialization{
+  font-size: 15px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.info{
+  padding-left: 10px;
+  padding-top: 20px;
 }
 
 .home
@@ -39,3 +69,24 @@
   .searchbar:focus {
     border-color: #00060b; /* Change the border color on focus as desired */
   }
+
+  .button-class {
+    background-color: #007bff; /* Blue background color */
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding around text */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor style on hover */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 20px; /* Adjust top margin as needed */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .button-class:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+  
+  .button-class:focus {
+    outline: none; /* Remove outline on focus */
+  }
+  

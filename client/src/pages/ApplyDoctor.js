@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Col, Form, Input, message, Row, TimePicker } from "antd";
 import Layout from "../components/Layout";
+import "../Styles/ApplyDoctor.css";
 
 const ApplyDoctor = () => {
   const [userData, setUserData] = useState({});
@@ -10,7 +11,9 @@ const ApplyDoctor = () => {
 
   const getUserData = async () => {
     try {
-      const res = await axios.post("http://localhost:9090/api/v1/user/getUserData",{},
+      const res = await axios.post(
+        "http://localhost:9090/api/v1/user/getUserData",
+        {},
         {
           headers: {
             authorization: localStorage.getItem("token"),
@@ -18,8 +21,8 @@ const ApplyDoctor = () => {
         }
       );
       setUserData(res?.data.data);
-      setIsAdmin((res.data.data).isAdmin)
-      setIsDoctor((res.data.data).isDoctor)
+      setIsAdmin(res.data.data.isAdmin);
+      setIsDoctor(res.data.data.isDoctor);
 
       console.log("isAdmin:", isAdmin);
       console.log("isDoctor:", isDoctor);
@@ -27,16 +30,19 @@ const ApplyDoctor = () => {
     } catch (error) {
       console.log(error);
     }
-
   };
 
   const onFinishHandler = async (values) => {
     try {
-      const res = await axios.post("http://localhost:9090/api/v1/user/apply-doctor", values, {
-        headers: {
-          authorization: localStorage.getItem("token"),
-        },
-      });
+      const res = await axios.post(
+        "http://localhost:9090/api/v1/user/apply-doctor",
+        values,
+        {
+          headers: {
+            authorization: localStorage.getItem("token"),
+          },
+        }
+      );
 
       if (res.data.success) {
         message.success("Register successfully!");
@@ -47,7 +53,6 @@ const ApplyDoctor = () => {
       message.error("Something went wrong");
     }
   };
-
 
   useEffect(() => {
     getUserData();
@@ -65,18 +70,23 @@ const ApplyDoctor = () => {
 const DocForm = ({ onSubmit }) => {
   return (
     <>
-      <center><h1 className="text-center">Apply Doctor</h1></center>
+      <center>
+        <h1 className="text-center">Apply Doctor</h1>
+        <hr className="underline-apply-doctor" />
+      </center>
+      
       <div className="form-container">
-        <Form layout="vertical" onFinish={onSubmit} className="m-3">
-          <h3 className="">Personal Details :-</h3>
+        <Form layout="vertical" onFinish={onSubmit} className="row-class">
+          
+          <h3 style={{ marginLeft: '10px' }}>Personal Details :-</h3>
 
-          <Row>
+          <Row className="row-class">
             <Col xs={24} md={24} lg={8}>
               <Form.Item
                 label={<b>First Name</b>}
                 name="firstName"
                 required
-                className="m-2"
+                className="form-item-class"
               >
                 <Input
                   type="text"
@@ -90,7 +100,7 @@ const DocForm = ({ onSubmit }) => {
               <Form.Item
                 label={<b>Last Name</b>}
                 name="lastName"
-                className="m-2"
+                className="form-item-class"
                 required
               >
                 <Input
@@ -100,12 +110,14 @@ const DocForm = ({ onSubmit }) => {
                 ></Input>
               </Form.Item>
             </Col>
+          </Row>
 
+          <Row className="row-class">
             <Col xs={24} md={24} lg={8}>
               <Form.Item
                 label={<b>Phone number</b>}
                 name="phone"
-                className="m-2"
+                className="form-item-class"
                 required
               >
                 <Input
@@ -115,25 +127,25 @@ const DocForm = ({ onSubmit }) => {
                 ></Input>
               </Form.Item>
             </Col>
-          </Row>
 
-          <Row>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
                 label={<b>Address</b>}
                 name="address"
-                className="m-2"
+                className="form-item-class"
                 required
               >
                 <Input type="text" placeholder="Your Address" required></Input>
               </Form.Item>
             </Col>
+          </Row>
 
+          <Row className="row-class">
             <Col xs={24} md={24} lg={8}>
               <Form.Item
                 label={<b>Email</b>}
                 name="email"
-                className="m-2"
+                className="form-item-class"
                 required
               >
                 <Input type="email" placeholder="Your Email" required></Input>
@@ -141,7 +153,11 @@ const DocForm = ({ onSubmit }) => {
             </Col>
 
             <Col xs={24} md={24} lg={8}>
-              <Form.Item label={<b>Website</b>} name="website" className="m-2">
+              <Form.Item
+                label={<b>Website</b>}
+                name="website"
+                className="form-item-class"
+              >
                 <Input
                   type="text"
                   placeholder="Your Website"
@@ -151,15 +167,15 @@ const DocForm = ({ onSubmit }) => {
             </Col>
           </Row>
 
-          <br />
+          
           <h3>Profession Details :- </h3>
-          <Row>
+          <Row className="row-class">
             <Col xs={24} md={24} lg={8}>
               <Form.Item
                 label={<b>Specealization </b>}
                 name="specialization"
                 required
-                className="m-2 "
+                className="form-item-class"
               >
                 <Input
                   type="text"
@@ -168,12 +184,13 @@ const DocForm = ({ onSubmit }) => {
                 ></Input>
               </Form.Item>
             </Col>
+
             <Col xs={24} md={24} lg={8}>
               <Form.Item
                 label={<b>Experience</b>}
                 name="experience"
                 required
-                className="m-2"
+                className="form-item-class"
               >
                 <Input
                   type="number"
@@ -182,25 +199,25 @@ const DocForm = ({ onSubmit }) => {
                 ></Input>
               </Form.Item>
             </Col>
+          </Row>
 
+          <Row className="row-class">
             <Col xs={24} md={24} lg={8}>
               <Form.Item
                 label={<b>fees Per consultant</b>}
                 name="feesPerConsultant"
-                className="m-2"
+                className="form-item-class"
                 required
               >
                 <Input type="number" required placeholder="Your Fees"></Input>
               </Form.Item>
             </Col>
-          </Row>
 
-          <Row>
             <Col xs={24} md={24} lg={8}>
               <Form.Item
                 label={<b>Timing</b>}
                 name="timings"
-                className="m-2"
+                className="form-item-class"
                 required
               >
                 <TimePicker.RangePicker format="HH:mm" />
@@ -210,7 +227,7 @@ const DocForm = ({ onSubmit }) => {
 
           {/* <Link to="/login" className="m-3">already user login here</Link> */}
           <center>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="button-class">
               Submit
             </button>
           </center>
