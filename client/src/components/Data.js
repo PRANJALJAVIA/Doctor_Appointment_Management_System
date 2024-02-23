@@ -15,8 +15,8 @@ export const SidebarUser = [
       icon: "fa-solid fa-user-doctor",
     },
     {
-      name: "Profile",
-      path: "/profile",
+      name: "Edit Profile",
+      path: "/user-profile",
       icon: "fa-solid fa-user",
     },
   ];
@@ -47,7 +47,7 @@ export const SidebarUser = [
       icon: "fa-solid fa-user-doctor",
     },
     {
-      name: "Profile",
+      name: "Edit Profile",
       path: "/profile",
       icon: "fa-solid fa-user",
     },

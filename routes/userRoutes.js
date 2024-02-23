@@ -6,6 +6,7 @@ const { applyDocCtrl } = require('../controllers/ApplyDoctorController');
 const { getDocListController, getDocDetailsForAppointment } = require('../controllers/getDoctorListController');
 const { approveDoc, approveDocUser } = require('../controllers/ApproveDocController');
 const { checkAvailibilityCtrl, getAppointmentListCtrl, approveAppointmentCtrl } = require('../controllers/AppointmentController');
+const { UpdateUserProfile } = require('../controllers/EditProfileController');
 
 //user router
 const router = express.Router();
@@ -39,5 +40,8 @@ router.post('/getAppointmentList', getAppointmentListCtrl)
 
 //for approving appointment
 router.post('/approve-appointment', approveAppointmentCtrl)
+
+//for updating user profile
+router.put('/Update-User-Profile', UpdateUserProfile)
 
 module.exports = router;
