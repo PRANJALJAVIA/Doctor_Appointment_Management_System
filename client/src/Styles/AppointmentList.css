@@ -1,0 +1,23 @@
+.appointmentdata{
+    color: rgb(0, 0, 0);
+   
+    display: block;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 300px;
+    height : 270px;
+    padding: 4px;
+    font-size: 18px;
+    /* font-family: Georgia, 'Times New Roman', Times, serif; */
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    margin-top: -8px;
+    margin-bottom: 15px;
+    margin-left: 45px;
+    border-radius: 10px;
+    border: 2px solid #00060b
+}
+
+.info{
+    padding-left: 10px;
+    padding-top: 20px;
+}

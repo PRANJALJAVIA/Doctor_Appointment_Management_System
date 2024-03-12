@@ -11,6 +11,8 @@ import AppointmentUser from "./pages/AppointmentUser";
 import BookAppointment from "./pages/BookAppointment";
 import AppointmentDoctor from "./pages/AppointmentDoctor";
 import EditProfileUser from "./pages/EditProfileUser";
+import EditProfileDoctor from "./pages/EditProfileDoctor";
+import PredictDisease from "./pages/PredictDisease";
 
 function App() {
   return (
@@ -26,6 +28,8 @@ function App() {
           <Route path="/book-appointment/:id" element={<ProtectedRoute> <BookAppointment/> </ProtectedRoute>} />   
           <Route path="/appointment-doctor" element={<ProtectedRoute> <AppointmentDoctor/> </ProtectedRoute>} /> 
           <Route path="/user-profile" element={<ProtectedRoute> <EditProfileUser /> </ProtectedRoute>}/>  
+          <Route path="/doctor-profile" element={<ProtectedRoute> <EditProfileDoctor /> </ProtectedRoute>}></Route>
+          <Route path="/predict-my-disease" element={<ProtectedRoute> <PredictDisease /> </ProtectedRoute>}></Route>
         </Routes>
       </Router>  
     </>

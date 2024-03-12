@@ -5,12 +5,15 @@ import { Col, Form, Input, message, Row, TimePicker } from "antd";
 import "../Styles/EditProfileUser.css";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 
+
+
 const EditProfileUser = () => {
   const [userData, setUserData] = useState({});
   const [isAdmin, setIsAdmin] = useState(false);
   const [isDoctor, setIsDoctor] = useState(false);
 
-  const [form] = Form.useForm();
+  const [editProfileForm] = Form.useForm();
+  
 
   const getUserData = async () => {
     try {
@@ -48,23 +51,19 @@ const EditProfileUser = () => {
     }
   };
 
-  const handleChangePassword = async (values) => {
-    console.log("handle change password button clicked");
-  };
-
   useEffect(() => {
     getUserData();
   }, []);
 
   useEffect(() => {
-    form.setFieldsValue(userData);
-  }, [userData, form]);
+    editProfileForm.setFieldsValue(userData);
+  }, [userData, editProfileForm]);
 
   return (
     <>
       <Layout userData={userData} isAdmin={isAdmin} isDoctor={isDoctor}>
-        <EditProfileForm userData={userData} onFinish={handleUpdateProfile} />
-        <ChangePasswordForm onFinish={handleChangePassword} />
+        <EditProfileForm userData={userData} form={editProfileForm} onFinish={handleUpdateProfile} />
+        <ChangePasswordForm userData={userData}/>
       </Layout>
     </>
   );
@@ -72,8 +71,7 @@ const EditProfileUser = () => {
 
 export default EditProfileUser;
 
-const EditProfileForm = ({ userData, onFinish }) => {
-  const [form] = Form.useForm();
+const EditProfileForm = ({ userData, form, onFinish }) => {
 
   useEffect(() => {
     form.setFieldsValue(userData);
@@ -112,12 +110,44 @@ const EditProfileForm = ({ userData, onFinish }) => {
   );
 };
 
-const ChangePasswordForm = ({ onFinish }) => {
+const ChangePasswordForm = ({userData}) => {
+  const [form] = Form.useForm();
+  console.log(userData)
+
+  const handleChangePassword = async (values) => {
+    try{
+      if (!values.password || !values.confirm_password) {
+        message.error("Please fill in both new password and confirm password fields");
+        return;
+      }  
+
+      if(values.password === values.confirm_password){
+
+        const res = await axios.put(
+          "http://localhost:9090/api/v1/user/Update-User-Password",
+          { password: values.password, _id: userData._id }
+        );
+        
+        message.success(res.data.message);
+
+        form.resetFields();
+      }
+      else{
+        message.error("New password and confirm password do not match");
+      }
+    }
+    catch(error){
+      console.log(error)
+      message.error("Failed to update password. Please try again later.")
+    }
+  };
+
   return (
     <center>
       <Form
         layout="vertical"
-        onFinish={onFinish}
+        onFinish={handleChangePassword}
+        form={form}
         className="change-password-form"
       >
         <h1 className="form-title">Change Password</h1>

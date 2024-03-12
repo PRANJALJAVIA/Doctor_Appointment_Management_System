@@ -4,6 +4,7 @@ import axios from "axios";
 import { message, Form, Select, DatePicker } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 import "../Styles/BookAppointment.css";
+import moment from "moment";
 
 const { Option } = Select;
 
@@ -38,6 +39,9 @@ const BookAppointment = () => {
   const [endTime, setEndTime] = useState(null);
 
   const [date, setDate] = useState(null);
+
+  const [selectedTime, setSelectedTime] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const getUserData = async () => {
     try {
@@ -84,20 +88,21 @@ const BookAppointment = () => {
 
   useEffect(() => {
     if (startTime !== null && endTime !== null) {
+      console.log(startTime);
+      console.log(endTime);
       generateTimeSlots(startTime, endTime, 60);
     }
   }, [startTime, endTime]);
 
   const onfinishHandler = async (values) => {
-    console.log(values);
     try {
-      const timing = values.timings;
+      const timing = selectedTime;
       const userEmail = userData.email;
       const docId = docData._id;
       const uName = userData.name;
 
       //formatting date
-      const date = new Date(values.date);
+      const date = new Date(selectedDate);
       const year = date.getFullYear();
       const month = String(date.getMonth() + 1).padStart(2, "0"); // Add leading zero if needed
       const day = String(date.getDate()).padStart(2, "0"); // Add leading zero if needed
@@ -207,22 +212,25 @@ const BookAppointment = () => {
           <br />
           <Form
             layout="vertical"
-            onFinish={onfinishHandler}
+            onFinish={(values) => onfinishHandler(values)}
             className="register_form"
           >
             <div className="form-row">
-              <label htmlFor="date">Date:</label>
-              <DatePicker id="date" placeholder="Select date" />
+              <label htmlFor="date">Date: 
+              <DatePicker name="date" id="date" value={selectedDate} onChange={(date) => setSelectedDate(date)} placeholder="Select date" />
+              </label>
             </div>
             <div className="form-row">
               <label htmlFor="timing">Timing:</label>
-              <Select id="timing" placeholder="Select time">
-                {timeSlots.map((timeSlot, index) => (
-                  <Option key={index} value={timeSlot}>
-                    {timeSlot}
-                  </Option>
-                ))}
-              </Select>
+              {timeSlots.length > 0 && (
+                <Select id="timing" placeholder="Select time" value={selectedTime} onChange={(value) => setSelectedTime(value)}>
+                  {timeSlots.map((timeSlot, index) => (
+                    <Option key={index} value={timeSlot}>
+                      {timeSlot}
+                    </Option>
+                  ))}
+                </Select>
+              )}
             </div>
             <button className="book-appointment-button" type="submit">
               Book appointment

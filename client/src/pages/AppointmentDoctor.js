@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import axios from "axios";
 import Layout from "../components/Layout";
+import "../Styles/AppointmentList.css";
 
 function AppointmentDoctor() {
     const [userData, setUserData] = useState({});
@@ -71,7 +72,8 @@ function AppointmentDoctor() {
   }, []);
 
   return (
-    <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData}>
+    <>
+      <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData}>
         <center>
             <h1>Appointment List</h1>
         </center>
@@ -97,24 +99,20 @@ function AppointmentDoctor() {
                 return(
                     <div key={index}>
                         <div className='appointmentdata'>
-                            <div className='text-dark bg-secondry m-3 border-dark rounded'>
-                                <label className='mr-3'>Name : </label>
-                                {appointment.userName}
+                            <div className="info" style={{ display: 'flex', alignItems: 'center' }}>
+                              <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Name </div> : {appointment.userName}
                             </div>
 
-                            <div className='text-dark bg-secondry m-3 border-dark rounded'>
-                                <label className='mr-3'>Email : </label>
-                                {appointment.userEmail}
+                            <div className="info" style={{ display: 'flex', alignItems: 'center' }}>
+                              <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Email </div> : {appointment.userEmail}
                             </div>
 
-                            <div className='text-dark bg-secondry m-3 border-dark rounded'>
-                                <label className='mr-3'>Date : </label>
-                                {appointment.date}
+                            <div className="info" style={{ display: 'flex', alignItems: 'center' }}>
+                              <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Date </div> : {appointment.date}
                             </div>
 
-                            <div className='text-dark bg-secondry m-3 border-dark rounded'>
-                                <label className='mr-3'>Timing : </label>
-                                {appointment.timing}
+                            <div className="info" style={{ display: 'flex', alignItems: 'center' }}>
+                              <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Timing </div> : {appointment.timing}
                             </div>
 
                             {appointment.status === false && ( 
@@ -136,7 +134,8 @@ function AppointmentDoctor() {
             }
         </div>
 
-    </Layout>
+      </Layout>
+    </>
   );
 }
 
