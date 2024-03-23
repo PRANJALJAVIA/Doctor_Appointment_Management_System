@@ -5,7 +5,7 @@
     justify-content: center;
     background-color: #ffffff;
     width: 300px;
-    height : 270px;
+    height : 350px;
     padding: 4px;
     font-size: 18px;
     /* font-family: Georgia, 'Times New Roman', Times, serif; */
@@ -21,3 +21,43 @@
     padding-left: 10px;
     padding-top: 20px;
 }
+
+.button-class {
+    background-color: #007bff; /* Blue background color */
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding around text */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor style on hover */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 30px; /* Adjust top margin as needed */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .button-class:hover {
+    background-color: #0056b3; /* Darker blue color on hover */
+  }
+  
+  .button-class:focus {
+    outline: none; /* Remove outline on focus */
+  }
+
+  .button-class-reject {
+    background-color: #ff1100; /* Blue background color */
+    color: white; /* White text color */
+    border: none; /* No border */
+    padding: 10px 20px; /* Padding around text */
+    font-size: 16px; /* Font size */
+    cursor: pointer; /* Cursor style on hover */
+    border-radius: 5px; /* Rounded corners */
+    margin-top: 5px; /* Adjust top margin as needed */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .button-class-reject:hover {
+    background-color: #b33000; /* Darker blue color on hover */
+  }
+  
+  .button-class-reject:focus {
+    outline: none; /* Remove outline on focus */
+  }

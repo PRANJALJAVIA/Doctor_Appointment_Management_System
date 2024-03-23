@@ -88,64 +88,93 @@ const DoctorList = () => {
               onChange={(e) => setSearchQuery(e.target.value)}
             />
           </center>
-          <center>
-            <div className="home">
-              {docList
-                .filter((doc) =>
-                  `${doc.firstName} ${doc.lastName} ${doc.email} ${doc.specialization} ${doc.phone} ${doc.status}`
-                    .toLowerCase()
-                    .includes(searchQuery.toLowerCase())
-                )
-                .map((doc, index) => {
-                  return (
-                    <div key={index}>
-                      <div className="doctordata">
-                        <div className="text-dark bg-secondry m-3 border-dark rounded">
-                          <label className="mr-3">First Name : </label>
-                          {doc.firstName}
-                        </div>
 
-                        <div className="text-dark bg-secondry m-3 border-dark rounded">
-                          <label className="mr-3">Last Name : </label>
-                          {doc.lastName}
-                        </div>
+          <div className="home">
+            {docList
+              .filter((doc) =>
+                `${doc.firstName} ${doc.lastName} ${doc.email} ${doc.specialization} ${doc.phone} ${doc.status}`
+                  .toLowerCase()
+                  .includes(searchQuery.toLowerCase())
+              )
+              .map((doc, index) => {
+                return (
+                  <div key={index}>
+                    <div className="doctordata">
+                      <div className="DoctorName">
+                        Dr. {doc.firstName} {doc.lastName}
+                      </div>
 
-                        <div className="text-dark bg-secondry m-3 border-dark rounded">
-                          <label>Email :</label>
-                          {doc.email}
-                        </div>
+                      <div className="specialization">
+                        ({doc.specialization})
+                      </div>
 
-                        <div className="text-dark bg-secondry m-3 border-dark rounded">
-                          <label>Specialization :</label>
-                          {doc.specialization}
-                        </div>
+                      <hr className="underline" />
 
-                        <div className="text-dark bg-secondry m-3 border-dark rounded">
-                          <label>Experience : </label>
-                          {doc.experience}
-                        </div>
+                      <div
+                        className="info"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <div style={{ fontWeight: "bold", marginRight: "5px" }}>
+                          Email
+                        </div>{" "}
+                        : {doc.email}
+                      </div>
 
-                        <div className="text-dark bg-secondry m-3 border-dark rounded">
-                          <label> Phone : </label>
-                          {doc.phone}
-                        </div>
+                      <div
+                        className="info"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <div style={{ fontWeight: "bold", marginRight: "5px" }}>
+                          Experience
+                        </div>{" "}
+                        : {doc.experience}
+                      </div>
 
-                        <div className="text-dark bg-secondry m-3  border-dark rounded">
-                          <label> Status : </label>
-                          {doc.status}
-                        </div>
+                      <div
+                        className="info"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <div style={{ fontWeight: "bold", marginRight: "5px" }}>
+                          Phone
+                        </div>{" "}
+                        : {doc.phone}
+                      </div>
 
+                      <div
+                        className="info"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <div style={{ fontWeight: "bold", marginRight: "5px" }}>
+                          Address
+                        </div>{" "}
+                        : {doc.address}
+                      </div>
+
+                      <div
+                        className="info"
+                        style={{ display: "flex", alignItems: "center" }}
+                      >
+                        <div style={{ fontWeight: "bold", marginRight: "5px" }}>
+                          Status
+                        </div>{" "}
+                        : {doc.status}
+                      </div>
+
+                      <center>
                         {doc.status === "pending" && (
-                          <button onClick={() => approveDoc(doc.userId)}>
+                          <button
+                            className="button-class"
+                            onClick={() => approveDoc(doc.userId)}
+                          >
                             Approve
                           </button>
                         )}
-                      </div>
+                      </center>
                     </div>
-                  );
-                })}
-            </div>
-          </center>
+                  </div>
+                );
+              })}
+          </div>
         </>
       </Layout>
     </>

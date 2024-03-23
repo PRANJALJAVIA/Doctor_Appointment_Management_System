@@ -62,8 +62,20 @@ function AppointmentDoctor() {
   }
 
   //for reject button
-  const onfinishHandler2 = async ()=> {
-    
+  const onfinishHandler2 = async (time, date, docId, userEmail)=> {
+    const res = await axios.post("http://localhost:9090/api/v1/user/reject-appointment",{
+      timing: time,
+      date: date,
+      docId: docId,
+      userEmail: userEmail,
+    });
+
+    if (res.status === 200) {
+      // Update the appointment list only if the status is 200
+      await getAppointmentList(userData._id);
+    } else {
+      console.error("Error rejecting appointment:", res.message);
+    }
   }
 
   useEffect(() => {
@@ -115,18 +127,26 @@ function AppointmentDoctor() {
                               <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Timing </div> : {appointment.timing}
                             </div>
 
-                            {appointment.status === false && ( 
-                              <div>                              
-                                <button onClick={() => onfinishHandler1(appointment.timing, appointment.date, appointment.docId, appointment.userEmail)}>
-                                    Approve
-                                </button>
-                                <br />
-                                <br />
-                                <button onClick={onfinishHandler2}>
-                                    Reject
-                                </button>
-                              </div>          
-                            )} 
+                            {appointment.status === true && (
+                              <div className="info" style={{ display: 'flex', alignItems: 'center' }}>
+                                <div style={{ fontWeight: 'bold', marginRight: '5px' }}>Status </div> : Approved
+                              </div>
+                            )}
+                            
+                            <center>
+                              {appointment.status === false && ( 
+                                <div>                              
+                                  <button className='button-class' onClick={() => onfinishHandler1(appointment.timing, appointment.date, appointment.docId, appointment.userEmail)}>
+                                      Approve
+                                  </button>
+                                  <br />
+                                  <br />
+                                  <button className='button-class-reject' onClick={() => onfinishHandler2(appointment.timing, appointment.date, appointment.docId, appointment.userEmail)}>
+                                      Reject
+                                  </button>
+                                </div>          
+                              )} 
+                            </center>
                         </div>
                     </div>
                 );

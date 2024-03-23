@@ -19,7 +19,7 @@
 }
 
 .DoctorName{
-  font-weight: bold; /* Make the name bold */
+  font-weight: bold;
   font-size: 27px;
   padding-left: 10px;
   padding-top: 10px;
@@ -89,4 +89,3 @@
   .button-class:focus {
     outline: none; /* Remove outline on focus */
   }
-  
