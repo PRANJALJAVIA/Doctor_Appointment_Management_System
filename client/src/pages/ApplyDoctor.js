@@ -3,11 +3,14 @@ import axios from "axios";
 import { Col, Form, Input, message, Row, TimePicker } from "antd";
 import Layout from "../components/Layout";
 import "../Styles/ApplyDoctor.css";
+import { useLocation } from "react-router-dom"
 
 const ApplyDoctor = () => {
   const [userData, setUserData] = useState({});
   const [isAdmin, setIsAdmin] = useState(false);
   const [isDoctor, setIsDoctor] = useState(false);
+
+  const location = useLocation(); 
 
   const getUserData = async () => {
     try {
@@ -38,7 +41,7 @@ const ApplyDoctor = () => {
 
   return (
     <>
-      <Layout userData={userData} isAdmin={isAdmin} isDoctor={isDoctor}>
+      <Layout userData={userData} isAdmin={isAdmin} isDoctor={isDoctor} pathname={location.pathname}>
         <DocForm />
       </Layout>
     </>

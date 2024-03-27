@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react'
 import Layout from "../components/Layout";
 import axios from "axios";
 import { message } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const AppointmentUser = () => {
   const [userData, setUserData] = useState({});
@@ -12,6 +12,7 @@ const AppointmentUser = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   const getUserData = async () => {
     try {
@@ -60,7 +61,7 @@ const AppointmentUser = () => {
 
   return (
     <>
-      <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData}>
+      <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData} pathname={location.pathname}>
         <>
           <center>
             <h1>Doctor List</h1>

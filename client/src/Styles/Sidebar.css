@@ -13,6 +13,16 @@
     overflow-y: auto;
   }
   
+  .sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 999;
+    color: #fff;
+    display: none; /* Initially hide the sidebar toggle button */
+  }
+
   .sidebar-content {
     display: flex;
     flex-direction: column;
@@ -39,6 +49,7 @@
   .sidebar a {
     text-decoration: none;
   }
-  
-  /* Add styles for other elements inside the sidebar as needed */
-  
+
+  .sidebar-item.active {
+    background-color: #555;
+  }

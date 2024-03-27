@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import { Col, Form, Input, message, Row, TimePicker } from "antd";
 import "../Styles/EditProfileUser.css";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
-
+import { useLocation } from "react-router-dom"
 
 
 const EditProfileUser = () => {
@@ -13,7 +13,7 @@ const EditProfileUser = () => {
   const [isDoctor, setIsDoctor] = useState(false);
 
   const [editProfileForm] = Form.useForm();
-  
+  const location = useLocation();
 
   const getUserData = async () => {
     try {
@@ -61,7 +61,7 @@ const EditProfileUser = () => {
 
   return (
     <>
-      <Layout userData={userData} isAdmin={isAdmin} isDoctor={isDoctor}>
+      <Layout userData={userData} isAdmin={isAdmin} isDoctor={isDoctor} pathname={location.pathname}>
         <EditProfileForm userData={userData} form={editProfileForm} onFinish={handleUpdateProfile} />
         <ChangePasswordForm userData={userData}/>
       </Layout>

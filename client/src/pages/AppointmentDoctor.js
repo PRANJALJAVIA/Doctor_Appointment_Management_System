@@ -2,6 +2,8 @@ import React,{useState, useEffect} from 'react'
 import axios from "axios";
 import Layout from "../components/Layout";
 import "../Styles/AppointmentList.css";
+import { message } from 'antd';
+import { useLocation } from "react-router-dom"
 
 function AppointmentDoctor() {
     const [userData, setUserData] = useState({});
@@ -9,6 +11,8 @@ function AppointmentDoctor() {
     const [isDoctor, setIsDoctor] = useState(false);
     const [AppointmentList, setAppointmentList] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
+
+    const location = useLocation();
 
   const getUserData = async () => {
     try {
@@ -44,8 +48,6 @@ function AppointmentDoctor() {
 
   //for approve button
   const onfinishHandler1 = async (time, date, docId, userEmail)=> {
-    console.log(time, date, docId)
-
     const res = await axios.post("http://localhost:9090/api/v1/user/approve-appointment",{
       timing: time,
       date: date,
@@ -56,6 +58,7 @@ function AppointmentDoctor() {
     if (res.status === 200) {
       // Update the appointment list only if the status is 200
       await getAppointmentList(userData._id);
+      message.success(res.data.message);
     } else {
       console.error("Error approving appointment:", res.message);
     }
@@ -73,6 +76,7 @@ function AppointmentDoctor() {
     if (res.status === 200) {
       // Update the appointment list only if the status is 200
       await getAppointmentList(userData._id);
+      message.error(res.data.message);
     } else {
       console.error("Error rejecting appointment:", res.message);
     }
@@ -85,7 +89,7 @@ function AppointmentDoctor() {
 
   return (
     <>
-      <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData}>
+      <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData} pathname={location.pathname}>
         <center>
             <h1>Appointment List</h1>
         </center>

@@ -23,6 +23,18 @@ html{
   border-radius: 25px;
 }
 
+#registerContainer{
+  max-width: 500px;
+  min-width: 300px;
+  max-height: 800px;
+  width: 50%;
+  height: 60%;
+  margin: 100px auto;
+  background-color: #FFFFFF;
+  border-radius: 25px;
+  border: 2px solid black;
+}
+
 #headerTitle{
   text-align: center;
   font-family: 'open sans', sans-serif;
@@ -36,14 +48,15 @@ html{
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
+  width: 80%;
   max-width: 100%;
-  
+  margin: 0 auto;
 }
 
 .row input{
-  width: 90%;
+  width: 100%;
   box-sizing: border-box;
-	border: none;
+	border: 2px solid black;
   font-size: 1.3rem;
   padding-left: 1.5rem;
   padding-bottom: 1rem;
@@ -52,8 +65,9 @@ html{
 }
 
 .row input:focus{
-   box-shadow: inset 0px -3px 0px 0px rgba(34,193,195,0.7);
-   outline: none;
+  border-color: #2cc0e5; 
+  box-shadow: 0 0 0 2px #2cc0e5; 
+  outline: none;
 }
 
 .row input::-webkit-input-placeholder{
@@ -80,8 +94,7 @@ html{
   font-size: 1.3rem;
   color: white;
   font-weight: 700;
-  background: rgb(34,193,195);
-  background: linear-gradient(90deg, rgba(34,193,195,1) 0%,     rgba(253,187,45,1) 100%);
+  background: #070F2B;
   border: 0px;
   cursor: pointer;
   transition: opacity 0.25s ease-out;
@@ -98,9 +111,8 @@ html{
 
 .label
 {
-  align-self: start;
-  
-  padding-left: 3.4rem;
+  align-self: center;
+  padding-left: 0px;
   padding-bottom: 0.5rem;
   color: rgba(187,187,187,0.9);
 }
@@ -130,6 +142,24 @@ html{
 
 .link1
 {
-   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-   margin-left: 50px;
+  font-family: "work sans";
+   margin-left: 20%;
+   align-items: center;
+   display: flex;
+   margin-right: 20%;
+   color: #070F2B;
+}
+
+@media (max-width: 768px) {
+  /* Adjust width for smaller screens like tablets */
+  .row {
+    width: 80%;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjust width for mobile screens */
+  .row {
+    width: 80%;
+  }
 }

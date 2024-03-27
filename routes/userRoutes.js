@@ -1,12 +1,13 @@
 const express = require('express');
 const { loginController, registerController } = require('../controllers/AuthController');
 const protect = require('../middlewares/authMiddlewares');
-const { getDataController } = require('../controllers/getDataController');
+const { getDataController, getAllUserData } = require('../controllers/getDataController');
 const { applyDocCtrl } = require('../controllers/ApplyDoctorController');
 const { getDocListController, getDocDetailsForAppointment } = require('../controllers/getDoctorListController');
 const { approveDoc, approveDocUser } = require('../controllers/ApproveDocController');
 const { checkAvailibilityCtrl, getAppointmentListCtrl, approveAppointmentCtrl, rejectAppointmentCtrl } = require('../controllers/AppointmentController');
 const { UpdateUserProfile, UpdateUserPassword, UpdateDoctorProfile } = require('../controllers/EditProfileController');
+const { getDataByYear, getDataByMonth } = require('../controllers/getDataForGraphController');
 
 //user router
 const router = express.Router();
@@ -17,8 +18,11 @@ router.post('/login', loginController);
 //register
 router.post('/register', registerController);
 
-//get user data
+//get user data(particular Id wise)
 router.post('/getUserData', protect, getDataController)
+
+//get all user's data
+router.get('/all-user-data', getAllUserData)
 
 //router for apply doctor form
 router.post('/apply-doctor', protect, applyDocCtrl) 
@@ -52,5 +56,11 @@ router.put('/Update-User-Password', UpdateUserPassword)
 
 //for updating user profile
 router.put('/Update-Doctor-Profile', UpdateDoctorProfile)
+
+//for getting data for year wise patient
+router.post('/year-wise-patient-list', getDataByYear)
+
+//for getting data for month wise patient
+router.post('/month-wise-patient-list', getDataByMonth)
 
 module.exports = router;

@@ -4,6 +4,7 @@ import { Col, Form, Input, message, Row, TimePicker } from "antd";
 import moment from "moment";
 import Layout from "../components/Layout";
 import "../Styles/EditProfileDoctor.css";
+import { useLocation } from "react-router-dom"
 
 const EditProfileDoctor = () => {
   const [userData, setUserData] = useState({});
@@ -13,6 +14,8 @@ const EditProfileDoctor = () => {
   const [docData, setDocData] = useState({});
 
   const [editProfileForm] = Form.useForm();
+
+  const location = useLocation();
 
   const getUserData = async () => {
     try {
@@ -141,7 +144,7 @@ const EditProfileDoctor = () => {
 
   return (
     <>
-      <Layout userData={userData} isAdmin={isAdmin} isDoctor={isDoctor}>
+      <Layout userData={userData} isAdmin={isAdmin} isDoctor={isDoctor} pathname={location.pathname}>
         <EditProfileForm
           doctorData={docData}
           form={editProfileForm}

@@ -8,7 +8,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const onfinishHandler = async (values) => {
-    console.log(values)
+    console.log(values);
     try {
       const res = await axios.post(
         "http://localhost:9090/api/v1/user/register",
@@ -29,8 +29,12 @@ const Register = () => {
 
   return (
     <>
-      <Form onFinish={onfinishHandler} layout="vertical" className="registerform">
-        <div id="registerform">
+      <div id="registerContainer">
+        <Form
+          onFinish={onfinishHandler}
+          layout="vertical"
+          className="registerform"
+        >
           <h2 id="headerTitle">Register</h2>
 
           <div className="row">
@@ -74,22 +78,24 @@ const Register = () => {
               <Form.Item name="mobile">
                 <input
                   type="text"
-                  placeholder="Enter your Mobil number"
+                  placeholder="Enter your Mobile number"
                   required
                 ></input>
               </Form.Item>
             </div>
           </div>
 
-          <div className="link1" >
-            <Link to="/login" className="m-3">Already have an account, login here</Link>
+          <div className="link1">
+            <Link to="/login" className="m-3">
+              Already have an account, login here
+            </Link>
           </div>
 
           <div id="button" class="row">
             <button>Register</button>
           </div>
-        </div>
-      </Form>
+        </Form>
+      </div>
     </>
   );
 };

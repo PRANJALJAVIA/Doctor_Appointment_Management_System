@@ -17,11 +17,12 @@ export const SidebarUser = [
     {
       name: "Predict Disease",
       path: "/predict-my-disease",
+      icon: "",
     },
     {
       name: "Edit Profile",
       path: "/user-profile",
-      icon: "fa-solid fa-user",
+      icon: "fa-solid fa-address-card",
     },
   ];
   
@@ -48,12 +49,12 @@ export const SidebarUser = [
     {
       name: "Appointments",
       path: "/appointment-doctor",
-      icon: "fa-solid fa-user-doctor",
+      icon: "fa-solid fa-list",
     },
     {
       name: "Edit Profile",
       path: "/doctor-profile",
-      icon: "fa-solid fa-user",
+      icon: "fa-solid fa-address-card",
     },
   ];
   

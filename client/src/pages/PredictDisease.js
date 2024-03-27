@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Col, Form, Input, message, Row } from "antd";
 import Layout from "../components/Layout";
+import "../Styles/PredictDisease.css";
+import { useLocation } from "react-router-dom";
 
 const PredictDisease = () => {
   const [userData, setUserData] = useState({});
@@ -9,6 +11,8 @@ const PredictDisease = () => {
   const [isDoctor, setIsDoctor] = useState(false);
 
   const [predictedDisease, setPredictedDisease] = useState();
+
+  const location = useLocation();
 
   const getUserData = async () => {
     try {
@@ -46,7 +50,7 @@ const PredictDisease = () => {
   }, []);
 
   return (
-    <Layout userData={userData} isAdmin={isAdmin} isDoctor={isDoctor}>
+    <Layout userData={userData} isAdmin={isAdmin} isDoctor={isDoctor} pathname={location.pathname}>
       <div style={{ padding: 24 }}>
         <h1>Tell me your symptoms</h1>
         <Form
@@ -63,7 +67,7 @@ const PredictDisease = () => {
           </Form.Item>
 
           <Form.Item>
-            <button type="primary" htmlType="submit">
+            <button className="predict-disease-button" type="primary" htmlType="submit">
               Predict
             </button>
           </Form.Item>

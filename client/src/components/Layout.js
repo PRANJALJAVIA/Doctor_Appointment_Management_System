@@ -7,19 +7,19 @@ import { message } from "antd";
 import "../Styles/Layout.css"
 import Sidebar from "./Sidebar";
 
-const Layout = ({ isAdmin, isDoctor, userData, children }) => {
+const Layout = ({ isAdmin, isDoctor, userData, children, pathname }) => {
     const navigate = useNavigate();
     
     const location = useLocation();
     return (
         <>
             <div className="layout-container">
-                <Sidebar isAdmin={isAdmin} isDoctor={isDoctor} userData={userData} />
+                <Sidebar isAdmin={isAdmin} isDoctor={isDoctor} userData={userData} pathname={pathname} />
                 <div className="main-content">
                     {children}
                 </div>
             </div>
-        </>
+        </> 
     );
 };
 

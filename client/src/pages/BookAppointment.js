@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "../components/Layout";
 import axios from "axios";
 import { message, Form, Select, DatePicker } from "antd";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "../Styles/BookAppointment.css";
 import moment from "moment";
 
@@ -42,6 +42,8 @@ const BookAppointment = () => {
 
   const [selectedTime, setSelectedTime] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
+
+  const location = useLocation();
 
   const getUserData = async () => {
     try {
@@ -117,6 +119,9 @@ const BookAppointment = () => {
           userEmail: userEmail,
           docId: docId,
           userName: uName,
+          year: year,
+          month: month,
+          day: day,
         }
       );
 
@@ -133,7 +138,7 @@ const BookAppointment = () => {
   };
 
   return (
-    <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData}>
+    <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData} pathname={location.pathname}>
       <div className="doctor-details-container">
         <center>
           <h1>

@@ -3,6 +3,7 @@ import axios from "axios";
 import { message } from "antd";
 import Layout from "../components/Layout";
 import "../Styles/DoctorList.css";
+import { useLocation } from "react-router-dom"
 
 const DoctorList = () => {
   const [userData, setUserData] = useState({});
@@ -10,6 +11,8 @@ const DoctorList = () => {
   const [isDoctor, setIsDoctor] = useState(false);
   const [docList, setDocList] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+
+  const location = useLocation();
 
   const getUserData = async () => {
     try {
@@ -69,12 +72,12 @@ const DoctorList = () => {
       { userId: values }
     );
     console.log(res.message);
-    getDocList();
+    await getDocList();
   };
 
   return (
     <>
-      <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData}>
+      <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData} pathname={location.pathname}>
         <>
           <center>
             <h1>Doctor List</h1>

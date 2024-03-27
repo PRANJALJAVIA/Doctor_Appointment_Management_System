@@ -15,3 +15,66 @@
     border: 2px solid #090000; /* Add your border styles here */
     border-radius: 10px; /* Adjust the value for the desired amount of rounding */
 }
+
+.predict-disease-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .predict-disease-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .predict-disease-button:focus {
+    outline: none;
+  }
+
+  .drop-down{
+    width: 50%;
+    margin-top: 5%;
+    font-weight: bold;
+    font-size: x-large;
+  }
+
+  .card{
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    margin-top: 15%;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  }
+
+  .row-card{
+    display: flex;
+  }
+
+  .column-card{
+    flex: 50%;
+    padding: 10px;
+  }
+
+  .icon{
+    width: 20%;
+    height: 80%;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .icon:hover {
+    box-shadow: 0 0 10px 5px rgba(50, 215, 244, 0.5); /* Adding a box shadow on hover */
+  }
+
+  .total-number{
+    padding-top: 20px;
+    font-weight: bold;
+    font-size: xx-large;
+  }

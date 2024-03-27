@@ -27,6 +27,18 @@ const appointmentSchema = new mongoose.Schema({
     status:{
         type: Boolean,
         default: false,
+    },
+    year:{
+        type: String, 
+        required: [true, 'year is required'],
+    },
+    month:{
+        type: String,
+        required: [true, 'month is required'],
+    },
+    day:{
+        type: String, 
+        required: [true, 'day is required'],
     }
 })
 
