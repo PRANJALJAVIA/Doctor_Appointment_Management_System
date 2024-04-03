@@ -4,7 +4,7 @@ const protect = require('../middlewares/authMiddlewares');
 const { getDataController, getAllUserData } = require('../controllers/getDataController');
 const { applyDocCtrl } = require('../controllers/ApplyDoctorController');
 const { getDocListController, getDocDetailsForAppointment } = require('../controllers/getDoctorListController');
-const { approveDoc, approveDocUser } = require('../controllers/ApproveDocController');
+const { approveDoc } = require('../controllers/ApproveDocController');
 const { checkAvailibilityCtrl, getAppointmentListCtrl, approveAppointmentCtrl, rejectAppointmentCtrl } = require('../controllers/AppointmentController');
 const { UpdateUserProfile, UpdateUserPassword, UpdateDoctorProfile } = require('../controllers/EditProfileController');
 const { getDataByYear, getDataByMonth } = require('../controllers/getDataForGraphController');
@@ -31,7 +31,7 @@ router.post('/apply-doctor', protect, applyDocCtrl)
 router.get('/doctor-list', protect, getDocListController)
 
 //approve doctor from doctorlist by admin
-router.put('/approve-doctor', approveDoc, approveDocUser)
+router.put('/approve-doctor', approveDoc)
 
 //get doctor's profile for booking his/her appointment
 router.post('/doctor-profile', protect, getDocDetailsForAppointment)

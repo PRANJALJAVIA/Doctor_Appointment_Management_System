@@ -71,8 +71,16 @@ const DoctorList = () => {
       "http://localhost:9090/api/v1/user/approve-doctor",
       { userId: values }
     );
-    console.log(res.message);
-    await getDocList();
+    
+    if(res.status == 200){
+      await getDocList();
+      message.success(res.data.message);
+    }
+    else{
+      console.error("Error approving appointment:", res.message);
+    }
+
+    
   };
 
   return (
