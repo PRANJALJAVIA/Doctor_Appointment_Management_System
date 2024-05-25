@@ -50,7 +50,12 @@ const Homepage = () => {
 
   return (
     <>
-      <Layout isAdmin={isAdmin} isDoctor={isDoctor} userData={userData} pathname={location.pathname}>
+      <Layout
+        isAdmin={isAdmin}
+        isDoctor={isDoctor}
+        userData={userData}
+        pathname={location.pathname}
+      >
         {isAdmin ? (
           <AdminHomePage />
         ) : isDoctor ? (
@@ -111,8 +116,8 @@ const UserHomepage = () => {
           <p>
             At BookMyClinic, we are committed to making your healthcare
             experience seamless and personalized. Whether you need to book a
-            doctor's appointment or find the right specialist for your symptoms,
-            we've got you covered.
+            doctor's appointment or get information of diseases, diet plans,
+            medicine, precautions based on your symptoms, we'vs got you covered.
           </p>
           <h2>Book Your Appointment</h2>
           <h3>Convenient Appointments, Anytime, Anywhere</h3>
@@ -122,12 +127,13 @@ const UserHomepage = () => {
             browse through a list of qualified doctors, check their
             availability, and book appointments with just a few clicks.
           </p>
-          <h2>Find the Right Specialist</h2>
+          <h2>Find the Right Diagnosis</h2>
           <h3>Personalized Recommendations for Your Health Needs</h3>
           <p>
-            Experiencing symptoms and unsure about the right specialist? Our
-            intelligent recommendation system analyzes your symptoms and
-            suggests the most relevant doctor specialists.
+            Experiencing symptoms and unsure about the diseases? Our intelligent
+            recommendation system analyzes your symptoms and gives description
+            of diseases, proper medicines, proper diet plans and precations
+            based on your symptoms.
           </p>
         </div>
         <div className="column2">
