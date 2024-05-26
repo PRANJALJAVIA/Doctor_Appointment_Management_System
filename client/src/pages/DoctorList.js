@@ -4,6 +4,7 @@ import { message } from "antd";
 import Layout from "../components/Layout";
 import "../Styles/DoctorList.css";
 import { useLocation } from "react-router-dom"
+import { baseURL } from "../URL";
 
 const DoctorList = () => {
   const [userData, setUserData] = useState({});
@@ -17,7 +18,7 @@ const DoctorList = () => {
   const getUserData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/getUserData",
+        `${baseURL}/getUserData`,
         {},
         {
           headers: {
@@ -36,7 +37,7 @@ const DoctorList = () => {
   const getDocList = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:9090/api/v1/user/doctor-list",
+        `${baseURL}/doctor-list`,
         {
           headers: {
             authorization: localStorage.getItem("token"),
@@ -68,7 +69,7 @@ const DoctorList = () => {
   const approveDoc = async (values) => {
     console.log(values);
     const res = await axios.put(
-      "http://localhost:9090/api/v1/user/approve-doctor",
+      `${baseURL}/approve-doctor`,
       { userId: values }
     );
     

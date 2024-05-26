@@ -3,6 +3,7 @@ import Layout from "../components/Layout";
 import axios from "axios";
 import { message } from "antd";
 import { useNavigate, useLocation } from "react-router-dom";
+import { baseURL } from "../URL";
 
 const AppointmentUser = () => {
   const [userData, setUserData] = useState({});
@@ -17,7 +18,7 @@ const AppointmentUser = () => {
   const getUserData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/getUserData",
+        `${baseURL}/getUserData`,
         {},
         {
           headers: {
@@ -36,7 +37,7 @@ const AppointmentUser = () => {
   const getDocList = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:9090/api/v1/user/doctor-list",
+        `${baseURL}/doctor-list`,
         {
           headers: {
             authorization: localStorage.getItem("token"),

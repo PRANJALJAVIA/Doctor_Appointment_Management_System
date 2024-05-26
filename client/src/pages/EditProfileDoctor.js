@@ -5,6 +5,7 @@ import moment from "moment";
 import Layout from "../components/Layout";
 import "../Styles/EditProfileDoctor.css";
 import { useLocation } from "react-router-dom"
+import { baseURL } from "../URL";
 
 const EditProfileDoctor = () => {
   const [userData, setUserData] = useState({});
@@ -20,7 +21,7 @@ const EditProfileDoctor = () => {
   const getUserData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/getUserData",
+        `${baseURL}/getUserData`,
         {},
         {
           headers: {
@@ -43,7 +44,7 @@ const EditProfileDoctor = () => {
   const getDocProfile = async (id) => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/doctor-profile",
+        `${baseURL}/doctor-profile`,
         { DocId: id },
         {
           headers: {
@@ -63,7 +64,7 @@ const EditProfileDoctor = () => {
       const timingsArray = [values.timings[0]._i, values.timings[1]._i];
 
       const res = await axios.put(
-        "http://localhost:9090/api/v1/user/Update-Doctor-Profile",
+        `${baseURL}/Update-Doctor-Profile`,
         {
           docId: userData._id,
           firstName: values.firstName,

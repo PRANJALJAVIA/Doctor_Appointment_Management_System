@@ -5,6 +5,7 @@ import { Col, Form, Input, message, Row, TimePicker } from "antd";
 import "../Styles/EditProfileUser.css";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import { useLocation } from "react-router-dom"
+import { baseURL } from "../URL";
 
 
 const EditProfileUser = () => {
@@ -18,7 +19,7 @@ const EditProfileUser = () => {
   const getUserData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/getUserData",
+        `${baseURL}/getUserData`,
         {},
         {
           headers: {
@@ -41,7 +42,7 @@ const EditProfileUser = () => {
   const handleUpdateProfile = async (values) => {
     try {
       const res = await axios.put(
-        "http://localhost:9090/api/v1/user/Update-User-Profile",
+        `${baseURL}/Update-User-Profile`,
         { name: values.name, mobile: values.mobile, email: userData.email }
       );
       message.success(res.data.message);
@@ -124,7 +125,7 @@ const ChangePasswordForm = ({userData}) => {
       if(values.password === values.confirm_password){
 
         const res = await axios.put(
-          "http://localhost:9090/api/v1/user/Update-User-Password",
+          `${baseURL}/Update-User-Password`,
           { password: values.password, _id: userData._id }
         );
         

@@ -4,6 +4,7 @@ import { Col, Form, Input, message, Row, TimePicker } from "antd";
 import Layout from "../components/Layout";
 import "../Styles/ApplyDoctor.css";
 import { useLocation } from "react-router-dom"
+import { baseURL } from "../URL";
 
 const ApplyDoctor = () => {
   const [userData, setUserData] = useState({});
@@ -15,7 +16,7 @@ const ApplyDoctor = () => {
   const getUserData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/getUserData",
+        `${baseURL}/getUserData`,
         {},
         {
           headers: {
@@ -54,7 +55,7 @@ const DocForm = () => {
   const onFinishHandler = async (values) => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/apply-doctor",
+        `${baseURL}/apply-doctor`,
         values,
         {
           headers: {

@@ -3,6 +3,7 @@ import axios from "axios";
 import "../Styles/RegisterStyles.css";
 import { Form, message, Input, Button } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { baseURL } from "../URL";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -11,7 +12,7 @@ const Register = () => {
     console.log(values);
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/register",
+        `${baseURL}/register`,
         values
       );
 

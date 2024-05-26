@@ -5,6 +5,7 @@ import { message, Form, Select, DatePicker } from "antd";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import "../Styles/BookAppointment.css";
 import moment from "moment";
+import { baseURL } from "../URL";
 
 const { Option } = Select;
 
@@ -48,7 +49,7 @@ const BookAppointment = () => {
   const getUserData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/getUserData",
+        `${baseURL}/getUserData`,
         {},
         {
           headers: {
@@ -67,7 +68,7 @@ const BookAppointment = () => {
   const getDocProfile = async (id) => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/doctor-profile",
+        `${baseURL}/doctor-profile`,
         { DocId: id },
         {
           headers: {
@@ -112,7 +113,7 @@ const BookAppointment = () => {
       const formattedDate = `${year}-${month}-${day}`;
 
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/check-availibility",
+        `${baseURL}/check-availibility`,
         {
           timing: timing,
           date: formattedDate,

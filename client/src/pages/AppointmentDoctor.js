@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import "../Styles/AppointmentList.css";
 import { message } from 'antd';
 import { useLocation } from "react-router-dom"
+import { baseURL } from "../URL";
 
 function AppointmentDoctor() {
     const [userData, setUserData] = useState({});
@@ -17,7 +18,7 @@ function AppointmentDoctor() {
   const getUserData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/getUserData",
+        `${baseURL}/getUserData`,
         {},
         {
           headers: {
@@ -37,7 +38,7 @@ function AppointmentDoctor() {
 
   const getAppointmentList = async (uId)=> {
     try{
-        const res = await axios.post("http://localhost:9090/api/v1/user/getAppointmentList", {userId: uId});
+        const res = await axios.post(`${baseURL}/getAppointmentList`, {userId: uId});
         setAppointmentList(res?.data.data);
         
     }
@@ -48,7 +49,7 @@ function AppointmentDoctor() {
 
   //for approve button
   const onfinishHandler1 = async (time, date, docId, userEmail)=> {
-    const res = await axios.post("http://localhost:9090/api/v1/user/approve-appointment",{
+    const res = await axios.post(`${baseURL}/approve-appointment`,{
       timing: time,
       date: date,
       docId: docId,
@@ -66,7 +67,7 @@ function AppointmentDoctor() {
 
   //for reject button
   const onfinishHandler2 = async (time, date, docId, userEmail)=> {
-    const res = await axios.post("http://localhost:9090/api/v1/user/reject-appointment",{
+    const res = await axios.post(`${baseURL}/reject-appointment`,{
       timing: time,
       date: date,
       docId: docId,

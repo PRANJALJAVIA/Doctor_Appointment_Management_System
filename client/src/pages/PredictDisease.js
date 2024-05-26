@@ -4,6 +4,7 @@ import { Col, Form, Input, message, Row } from "antd";
 import Layout from "../components/Layout";
 import "../Styles/PredictDisease.css";
 import { useLocation } from "react-router-dom";
+import { baseURL } from "../URL";
 
 const PredictDisease = () => {
   const [userData, setUserData] = useState({});
@@ -17,7 +18,7 @@ const PredictDisease = () => {
   const getUserData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/getUserData",
+        `${baseURL}/getUserData`,
         {},
         {
           headers: {

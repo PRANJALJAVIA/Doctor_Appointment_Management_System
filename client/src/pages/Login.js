@@ -3,6 +3,7 @@ import "../Styles/login.css";
 import axios from "axios";
 import { Form, Input, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
+import { baseURL } from "../URL";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ const Login = () => {
   const onfinishHandler = async (values) => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/login",
+        `${baseURL}/login`,
         values
       );
       if (res.data.success) {

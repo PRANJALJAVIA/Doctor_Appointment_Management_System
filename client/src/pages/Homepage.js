@@ -13,6 +13,7 @@ import svgImage from "../Assets/graph.png";
 import Chart from "react-apexcharts";
 import { Form, Input, message } from "antd";
 import CountUp from "react-countup";
+import { baseURL } from "../URL";
 
 const Homepage = () => {
   const [userData, setUserData] = useState({});
@@ -24,7 +25,7 @@ const Homepage = () => {
   const getUserData = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/getUserData",
+        `${baseURL}/getUserData`,
         {},
         {
           headers: {
@@ -230,7 +231,7 @@ const DoctorHomePage = ({ userData }) => {
   const onfinishHandler = async (values) => {
     if (values.month == "None") {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/year-wise-patient-list",
+        `${baseURL}/year-wise-patient-list`,
         {
           userId: userData._id,
           year: values.year,
@@ -277,7 +278,7 @@ const DoctorHomePage = ({ userData }) => {
       });
     } else {
       const res = await axios.post(
-        "http://localhost:9090/api/v1/user/month-wise-patient-list",
+        `${baseURL}/month-wise-patient-list`,
         {
           userId: userData._id,
           year: values.year,
@@ -413,7 +414,7 @@ const AdminHomePage = () => {
 
   const getData = async () => {
     const doctorDataRes = await axios.get(
-      "http://localhost:9090/api/v1/user/doctor-list",
+      `${baseURL}/doctor-list`,
       {
         headers: {
           authorization: localStorage.getItem("token"),
@@ -422,7 +423,7 @@ const AdminHomePage = () => {
     );
 
     const userDataRes = await axios.get(
-      "http://localhost:9090/api/v1/user/all-user-data"
+      `${baseURL}/all-user-data`
     );
 
     const userData = userDataRes.data.data;
