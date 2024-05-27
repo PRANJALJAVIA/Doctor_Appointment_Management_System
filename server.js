@@ -7,8 +7,6 @@ const cors = require('cors');
 //dotenv config
 dotenv.config();
 
-
-
 //mongodb connection
 connectDB();
 
@@ -24,8 +22,9 @@ app.use(morgan('dev'));
 
 //routes
 app.use("/api/v1/user", require("./routes/userRoutes"));
+// app.use("https://doctor-appointment-management-system-1.onrender.com", require("./routes/userRoutes"));
 
-const port = process.env.PORT || 9090
+const port = 9090 || process.env.PORT
 //listen port
 app.listen(port, ()=>{
     console.log(`Server is running at port: ${port}`)
